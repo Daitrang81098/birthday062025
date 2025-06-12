@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4 Years Anniversary</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1a0a0b, #3d1517, #5a1d1f);
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+        perspective: 1000px;
+      }
+
+      .container {
+        text-align: center;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: container-rotate 20s infinite linear;
+      }
+
+      @keyframes container-rotate {
+        0%,
+        100% {
+          transform: rotateY(0deg);
+        }
+        50% {
+          transform: rotateY(5deg);
+        }
+      }
+
+      .text {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .letter {
+        font-size: 6rem;
+        font-weight: bold;
+        color: transparent;
+        position: relative;
+        transition: all 0.3s;
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      .letter.visible {
+        opacity: 1;
+        transform: translateY(0);
+        color: #fff;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bd2026,
+          0 0 40px #bd2026;
+        animation: letter-active 3s infinite alternate;
+      }
+
+      @keyframes letter-active {
+        0% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bd2026,
+            0 0 40px #bd2026;
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          text-shadow: 0 0 15px #fff, 0 0 25px #fff, 0 0 35px #bd2026,
+            0 0 50px #bd2026;
+          transform: translateY(-5px) scale(1.05);
+        }
+        100% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #bd2026,
+            0 0 40px #bd2026;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .letter.highlight {
+        animation: letter-highlight 0.8s;
+      }
+
+      @keyframes letter-highlight {
+        0% {
+          transform: scale(1) translateY(0);
+        }
+        50% {
+          transform: scale(1.4) translateY(-15px);
+          text-shadow: 0 0 20px #fff, 0 0 30px #bd2026, 0 0 40px #bd2026,
+            0 0 50px #bd2026, 0 0 60px #bd2026;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .letter:hover {
+        transform: scale(1.2) translateY(-10px) !important;
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+      }
+
+      .sparkles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 5;
+      }
+
+      .sparkle {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        animation: sparkle-float 3s linear infinite;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+      }
+
+      @keyframes sparkle-float {
+        0% {
+          transform: translateY(0) rotate(0deg) scale(1);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(-10vh) rotate(45deg) scale(1.2);
+        }
+        50% {
+          transform: translateY(-50vh) rotate(180deg) scale(0.8);
+        }
+        90% {
+          opacity: 1;
+          transform: translateY(-90vh) rotate(315deg) scale(1.2);
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg) scale(1);
+          opacity: 0;
+        }
+      }
+
+      .heart {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #bd2026;
+        transform: rotate(45deg);
+        opacity: 0;
+        animation: heart-float 4s ease-in infinite;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: #bd2026;
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .heart:before {
+        top: -15px;
+        left: 0;
+      }
+
+      .heart:after {
+        top: 0;
+        left: -15px;
+      }
+
+      @keyframes heart-float {
+        0% {
+          transform: rotate(45deg) translateY(0) scale(0.3);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.8;
+          transform: rotate(45deg) translateY(-20vh) scale(0.6);
+        }
+        100% {
+          transform: rotate(45deg) translateY(-100vh) scale(0.3);
+          opacity: 0;
+        }
+      }
+
+      .glow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(189, 32, 38, 0.1) 0%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        top: 0;
+        left: 0;
+        z-index: 1;
+        animation: pulse 4s infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0.3;
+          transform: scale(0.8);
+        }
+        100% {
+          opacity: 0.7;
+          transform: scale(1.2);
+        }
+      }
+
+      .subtitle {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-top: 30px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 1s ease;
+      }
+
+      .subtitle.visible {
+        opacity: 1;
+        transform: translateY(0);
+        animation: subtitle-glow 3s infinite alternate;
+      }
+
+      @keyframes subtitle-glow {
+        0% {
+          text-shadow: 0 0 5px #fff, 0 0 10px #bd2026;
+          transform: translateY(0);
+        }
+        100% {
+          text-shadow: 0 0 10px #fff, 0 0 20px #bd2026, 0 0 30px #bd2026;
+          transform: translateY(-3px);
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sparkles" id="sparkles"></div>
+    <div class="container">
+      <div class="glow"></div>
+      <div class="text" id="text"></div>
+      <div class="subtitle" id="subtitle">Forever & Always</div>
+    </div>
+
+    <script>
+      const text = "4 years anniversary";
+      const textContainer = document.getElementById("text");
+      const sparklesContainer = document.getElementById("sparkles");
+      const subtitle = document.getElementById("subtitle");
+
+      [...text].forEach((char, index) => {
+        const span = document.createElement("span");
+        span.className = "letter";
+        span.textContent = char === " " ? "\u00A0" : char;
+        span.dataset.index = index;
+
+        // Thêm delay khác nhau cho mỗi chữ
+        span.style.transitionDelay = `${index * 0.2}s`;
+
+        textContainer.appendChild(span);
+
+        // Thêm hiệu ứng hover
+        span.addEventListener("mouseover", () => {
+          createSparkles(5);
+          span.classList.add("highlight");
+          setTimeout(() => {
+            span.classList.remove("highlight");
+          }, 800);
+        });
+      });
+
+      // Hiệu ứng xuất hiện từng chữ
+      const letters = document.querySelectorAll(".letter");
+
+      function revealLetters() {
+        letters.forEach((letter, index) => {
+          setTimeout(() => {
+            letter.classList.add("visible");
+            createSparkles(3);
+            if (index % 3 === 0) createHeart();
+
+            // Hiển thị subtitle sau khi tất cả chữ cái đã xuất hiện
+            if (index === letters.length - 1) {
+              setTimeout(() => {
+                subtitle.classList.add("visible");
+                createSparkles(10);
+                createHeart();
+                createHeart();
+
+                // Bắt đầu hiệu ứng liên tục sau khi tất cả chữ đã xuất hiện
+                startContinuousEffects();
+              }, 500);
+            }
+          }, 200 * index);
+        });
+      }
+
+      // Bắt đầu hiệu ứng liên tục
+      function startContinuousEffects() {
+        // Hiệu ứng nhấp nháy ngẫu nhiên cho chữ
+        setInterval(randomLetterEffect, 800);
+
+        // Tạo sparkles liên tục
+        setInterval(() => createSparkles(2), 300);
+
+        // Tạo hearts liên tục
+        setInterval(createHeart, 1000);
+      }
+
+      // Tạo hiệu ứng lấp lánh
+      function createSparkles(count = 15) {
+        for (let i = 0; i < count; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+
+          // Kích thước ngẫu nhiên
+          const size = Math.random() * 8 + 2;
+          sparkle.style.width = `${size}px`;
+          sparkle.style.height = `${size}px`;
+
+          // Vị trí ngẫu nhiên
+          sparkle.style.left = `${Math.random() * 100}%`;
+          sparkle.style.bottom = "0";
+
+          // Màu sắc ngẫu nhiên - tông màu đỏ
+          const colors = [
+            "#BD2026",
+            "#d14b50",
+            "#e57373",
+            "#ffcdd2",
+            "#f8bbd0",
+            "#ffebee",
+            "#ffffff",
+            "#f5f5f5",
+            "#fce4ec",
+            "#ffcccb",
+          ];
+          sparkle.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+          // Thời gian animation ngẫu nhiên
+          sparkle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+
+          sparklesContainer.appendChild(sparkle);
+
+          // Xóa sparkle sau khi animation kết thúc
+          setTimeout(() => {
+            sparkle.remove();
+          }, 5000);
+        }
+      }
+
+      // Tạo hiệu ứng trái tim
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+
+        // Kích thước ngẫu nhiên
+        const size = Math.random() * 15 + 10;
+        heart.style.width = `${size}px`;
+        heart.style.height = `${size}px`;
+
+        // Vị trí ngẫu nhiên
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.bottom = "0";
+
+        // Thời gian animation ngẫu nhiên
+        heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+
+        sparklesContainer.appendChild(heart);
+
+        // Xóa heart sau khi animation kết thúc
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }
+
+      // Thêm hiệu ứng nhấp nháy ngẫu nhiên cho chữ
+      function randomLetterEffect() {
+        const visibleLetters = document.querySelectorAll(".letter.visible");
+        if (visibleLetters.length === 0) return;
+
+        const randomIndex = Math.floor(Math.random() * visibleLetters.length);
+        const letter = visibleLetters[randomIndex];
+
+        letter.classList.add("highlight");
+        createSparkles(3);
+
+        setTimeout(() => {
+          letter.classList.remove("highlight");
+        }, 800);
+      }
+
+      // Hiệu ứng 3D theo chuột
+      document.addEventListener("mousemove", (e) => {
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+        document.querySelector(
+          ".container",
+        ).style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+
+      // Bắt đầu hiệu ứng xuất hiện sau khi trang đã tải xong
+      window.addEventListener("load", () => {
+        setTimeout(revealLetters, 500);
+      });
+
+      // Bắt đầu ngay nếu trang đã tải xong
+      if (document.readyState === "complete") {
+        setTimeout(revealLetters, 500);
+      }
+    </script>
+  </body>
+</html>
